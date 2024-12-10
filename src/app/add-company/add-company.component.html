@@ -1,0 +1,125 @@
+<div class="background-container">
+  <video autoplay muted loop id="video-background" muted>
+    <source src="/video/background.mp4" type="video/mp4">
+    </video>
+</div>
+<div class="layout">
+  <nav class="navbar">
+    <div class="logo">
+      <a routerLink="/">
+        <img src="https://i.pinimg.com/736x/9a/fd/22/9afd22496855d5213e4ec60f845e4b06.jpg" alt="Logo" class="logo-image" />
+      </a>
+    </div>
+    <ul class="menu">
+    <li><button (click)="navigateHome()">Home</button></li>
+    <li><button (click)="navigateFactory()">Factory</button></li>
+    <li><button (click)="navigateProducts()">Products</button></li>
+    <li><button (click)="navigateEmployee()">Employee</button></li>
+    <li><button (click)="navigateAddCompany()">Company</button></li>
+    </ul>
+  </nav> 
+</div>
+
+
+<div class="search-container">
+  <i class="fas fa-search search-icon"></i> 
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Search"
+    (keyup)="onSearch()"
+  />
+</div>
+
+
+<div class="container">
+  <div *ngIf="formVisible" class="form-container">
+    <h2>Add Company</h2>
+    <form (submit)="addCompany()" #companyForm="ngForm">
+      <div class="form-field">
+        <label>Company ID:</label>
+        <input [(ngModel)]="company_id" name="company_id" required />
+      </div>
+      <div class="form-field">
+        <label>Company Name:</label>
+        <input [(ngModel)]="company_name" name="company_name" required />
+      </div>
+      <div class="form-field">
+        <label>Address:</label>
+        <input [(ngModel)]="address" name="address" required />
+      </div>
+      <div class="form-field">
+        <label>Contact Number:</label>
+        <input [(ngModel)]="contact_number" name="contact_number" required />
+      </div>
+      <div class="form-field">
+        <label>Email:</label>
+        <input [(ngModel)]="email" name="email" required />
+      </div>
+      <div class="form-field">
+        <label>Website:</label>
+        <input [(ngModel)]="website" name="website" required />
+      </div>
+      <button type="submit" [disabled]="!isFormValid()" class="add-company-btn">Add Company</button>
+    </form>
+  </div>
+</div>
+
+<div class="hide-add-btn">
+  <button (click)="toggleForm()">
+    {{ formVisible ? 'Close' : ' Add Company ' }}
+  </button>
+</div>
+
+
+<div class="company-list">
+  <h2>Company-List</h2>
+  <div class="company-list-options">
+    <label for="company-count">Showing </label>
+    <select id="company-count" [(ngModel)]="pageSize" (change)="updateCompanyDisplay()">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="all">all</option>
+    </select>
+  </div>
+
+  <div class="company-box">
+    <div class="company-header">
+      <div class="header-item">CompanyID</div>
+      <div class="header-item">Company Name</div>
+      <div class="header-item">Address</div>
+      <div class="header-item">Contact Number</div>
+      <div class="header-item">Email</div>
+      <div class="header-item">Website</div>
+      <div class="header-item">Action</div>
+    </div>
+
+    <div class="company-row" *ngFor="let company of companies">
+      <div class="company-info">{{ company.company_id }}</div>
+      <div class="company-info">{{ company.company_name }}</div>
+      <div class="company-info">{{ company.address }}</div>
+      <div class="company-info">{{ company.contact_number }}</div>
+      <div class="company-info">{{ company.email }}</div>
+      <div class="company-info">
+        <a href="{{ company.website }}" target="_blank">{{ company.website }}</a>
+      </div>
+      <div class="company-info">
+        <button (click)="editCompany(companies)">Edit</button>
+        <button (click)="deleteCompany(company.company_id)">Delete</button>
+      </div>
+    </div>
+
+    
+    <div class="pagination">
+      <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+
+      
+      <button *ngFor="let page of getPagesArray()"
+        (click)="goToPage(page)"
+        [class.active]="currentPage === page">{{ page }}</button>
+
+      <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+  </div>
+</div>

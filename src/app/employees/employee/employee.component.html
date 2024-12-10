@@ -1,0 +1,96 @@
+<div class="background-container">
+  <video autoplay muted loop id="video-background" muted>
+    <source src="/video/background.mp4" type="video/mp4">
+    </video>
+</div>
+<div class="layout">
+  <nav class="navbar">
+    <div class="logo">
+      <a routerLink="/">
+        <img src="https://i.pinimg.com/736x/9a/fd/22/9afd22496855d5213e4ec60f845e4b06.jpg" alt="Logo" class="logo-image" />
+      </a>
+    </div>
+    <ul class="menu">
+    <li><button (click)="navigateHome()">Home</button></li>
+    <li><button (click)="navigateFactory()">Factory</button></li>
+    <li><button (click)="navigateProducts()">Products</button></li>
+    <li><button (click)="navigateEmployee()">Employee</button></li>
+    <li><button (click)="navigateAddCompany()">Company</button></li>
+    </ul>
+  </nav> 
+</div>
+<div class="container mt-4">
+    <h2>Employee Management</h2>
+  
+    <!-- Form สำหรับเพิ่ม/แก้ไขพนักงาน -->
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="mb-4">
+  <div class="form-group">
+    <label for="employee_id">Employee Id</label>
+    <input type="number" id="employee_id" formControlName="employee_id" class="form-control" />
+    <div *ngIf="employeeForm.get('employee_id')?.invalid && employeeForm.get('employee_id')?.touched" class="text-danger">
+      Employee ID is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="first_name">First Name</label>
+    <input type="text" id="first_name" formControlName="first_name" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="last_name">Last Name</label>
+    <input type="text" id="last_name" formControlName="last_name" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="position">Position</label>
+    <input type="text" id="position" formControlName="position" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="hire_date">Hire Date</label>
+    <input type="date" id="hire_date" formControlName="hire_date" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="salary">Salary</label>
+    <input type="number" id="salary" formControlName="salary" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="factory_id">Factory ID</label>
+    <input type="number" id="factory_id" formControlName="factory_id" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary mt-3" >
+    {{ editMode ? 'Update Employee' : 'Add Employee' }}
+  </button>
+  <button type="button" class="btn btn-secondary mt-3" (click)="cancelEdit()" *ngIf="editMode">
+    Cancel
+  </button>
+</form>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Position</th>
+          <th>Hire Date</th>
+          <th>Salary</th>
+          <th>Factory ID</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.employee_id }}</td>
+          <td>{{ employee.first_name }}</td>
+          <td>{{ employee.last_name }}</td>
+          <td>{{ employee.position }}</td>
+          <td>{{ employee.hire_date }}</td>
+          <td>{{ employee.salary }}</td>
+          <td>{{ employee.factory_id }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm" (click)="editEmployee(employee)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteEmployee(employee.employee_id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

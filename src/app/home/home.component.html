@@ -1,0 +1,62 @@
+<div class="background-container">
+  <video autoplay muted loop id="video-background" muted>
+    <source src="/video/background.mp4" type="video/mp4">
+    </video>
+</div>
+<div class="layout">
+    <nav class="navbar">
+      <div class="logo">
+        <a routerLink="/">
+          <img src="https://i.pinimg.com/736x/9a/fd/22/9afd22496855d5213e4ec60f845e4b06.jpg" alt="Logo" class="logo-image" />
+        </a>
+      </div>
+      <ul class="menu">
+      <li><button (click)="navigateHome()">Home</button></li>
+      <li><button (click)="navigateFactory()">Factory</button></li>
+      <li><button (click)="navigateProducts()">Products</button></li>
+      <li><button (click)="navigateEmployee()">Employee</button></li>
+      <li><button (click)="navigateAddCompany()">Company</button></li>
+      </ul>
+    </nav> 
+    <div class="navbar-Head">
+        <h1> Welcome </h1><br>
+        <h2>To Your Website</h2>
+      </div>
+  </div>
+
+  
+
+  <section class="features-section">
+    <div class="feature">
+      <a routerLink="/add-factoriee">
+        <img src="https://i.pinimg.com/736x/85/a4/d5/85a4d5d9cbaa205af9ba6c537d51e772.jpg" alt="Feature 1" />
+        <h3>Factory</h3>
+        <p>See more details click!</p>
+      </a>
+    </div>
+    <div class="feature">
+      <a routerLink="/add-product-management">
+        <img src="https://i.pinimg.com/736x/73/95/ed/7395edb276c193df13ce8167ba022354.jpg" alt="Feature 2" />
+        <h3>Products</h3>
+        <p>See more details click!</p>
+      </a>
+    </div>
+    <div class="feature">
+      <a routerLink="/add-employee">
+        <img src="https://i.pinimg.com/736x/f9/80/b9/f980b996368c1537187c7bd354572b77.jpg" alt="Feature 3" />
+        <h3>Employee</h3>
+        <p>See more details click!</p>
+      </a>
+    </div>
+    <div class="feature">
+      <a routerLink="/add-company">
+        <img src="https://i.pinimg.com/736x/44/52/74/4452743b3cd15a1bac4e54258064c071.jpg" alt="Feature 4" />
+        <h3>Company</h3>
+        <p>See more details click!</p>
+      </a>
+    </div>
+  </section>
+  
+  
+
+  <router-outlet></router-outlet>

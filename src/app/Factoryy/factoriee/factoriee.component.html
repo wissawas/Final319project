@@ -1,0 +1,93 @@
+<div class="background-container">
+  <video autoplay muted loop id="video-background" muted>
+    <source src="/video/background.mp4" type="video/mp4">
+    </video>
+</div>
+<div class="layout">
+  <nav class="navbar">
+    <div class="logo">
+      <a routerLink="/">
+        <img src="https://i.pinimg.com/736x/9a/fd/22/9afd22496855d5213e4ec60f845e4b06.jpg" alt="Logo" class="logo-image" />
+      </a>
+    </div>
+    <ul class="menu">
+    <li><button (click)="navigateHome()">Home</button></li>
+    <li><button (click)="navigateFactory()">Factory</button></li>
+    <li><button (click)="navigateProducts()">Products</button></li>
+    <li><button (click)="navigateEmployee()">Employee</button></li>
+    <li><button (click)="navigateAddCompany()">Company</button></li>
+    </ul>
+  </nav> 
+</div>
+<div class="container">
+    <h1>Manage Factories</h1>
+  
+    <form [formGroup]="factoryForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label>Factory ID:</label>
+            <input formControlName="factory_id" type="number" />
+          </div>
+      <div>
+        <label>Factory Name:</label>
+        <input formControlName="factory_name" type="text" />
+        <div *ngIf="factoryForm.get('factory_name')?.invalid && factoryForm.get('factory_name')?.touched">
+          Factory name is required.
+        </div>
+      </div>
+      <div>
+        <label>Location:</label>
+        <input formControlName="location" type="text" />
+      </div>
+      <div>
+        <label>Established Year:</label>
+        <input formControlName="established_year" type="number" />
+      </div>
+      <div>
+        <label>Contact Number:</label>
+        <input formControlName="contact_number" type="number" />
+      </div>
+      <div>
+        <label>Email:</label>
+        <input formControlName="email" type="email" />
+        <div *ngIf="factoryForm.get('email')?.invalid && factoryForm.get('email')?.touched">
+          Please enter a valid email.
+        </div>
+      </div>
+      <button type="submit">{{ editMode ? 'Update Factory' : 'Add Factory' }}</button>
+      <button type="button" (click)="cancelEdit()" *ngIf="editMode">Cancel</button>
+    </form>
+  
+    <hr />
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Factory ID</th>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Year</th>
+          <th>Contact</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="factories.length === 0">
+          <td colspan="7">No factory data available.</td>
+        </tr>
+        <tr *ngFor="let factory of factories">
+          <td>{{ factory.factory_id }}</td>
+          <td>{{ factory.factory_name }}</td>
+          <td>{{ factory.location }}</td>
+          <td>{{ factory.established_year }}</td>
+          <td>{{ factory.contact_number }}</td>
+          <td>{{ factory.email }}</td>
+          <td>
+            <button (click)="editFactory(factory)">Edit</button>
+            <button (click)="deleteFactory(factory.factory_id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

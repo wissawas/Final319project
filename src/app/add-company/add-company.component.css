@@ -1,0 +1,392 @@
+.background-container{
+  position: absolute;
+  z-index: -100;
+}
+.layout {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar {
+  width: 10px;
+  background-color: none; 
+  color: #fff;
+  padding: 10px 40px; 
+  display: flex;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 1);;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 1000px;
+  z-index: 10;
+  border-radius: 20px; 
+  margin-left: 10px; 
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 35px;
+  right: 50px;
+}
+
+.navbar .logo img {
+  width: 50px; 
+  height: auto;
+  border-radius: 250px;
+}
+
+
+.navbar-image-container {
+  margin-top: 20px; 
+  text-align: center;
+}
+  .navbar-image {
+    width: 45%; 
+    max-width: 1500px; 
+    height: auto;
+    border-radius: 10px; 
+  }
+  .menu {
+    
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu li {
+    margin-left: 20px;
+    
+  }
+  
+  .menu button {
+    font-family: "Josefin Sans", sans-serif;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s ease;
+  }
+  
+  .menu button:hover {
+    color: #ff9800; 
+    transform: translateY(-3px); 
+  }
+  
+  
+  .navbar.scrolled {
+    background-color: #111; 
+  }
+
+
+html, body {
+    height: 100%; 
+    margin: 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+
+.search-container {
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 80%;
+    max-width: 600px;
+    padding: 10px;
+    margin-left: 27%;
+    left: 70px;
+    top: 50px;
+}
+
+
+.search-container input {
+    font-family: "Josefin Sans", sans-serif;
+    width: 100%;
+    padding: 15px 15px 15px 40px; 
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+
+.search-icon {
+    position: absolute;
+    left: 20px; 
+    top: 50%;
+    transform: translateY(-50%); 
+    font-size: 18px;
+    color: #aaa;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: flex-start; 
+    margin-top: 20px; 
+}
+
+
+.form-container h2 {
+    text-align: center; 
+    margin-bottom: 20px; 
+    font-size: 24px; 
+    font-weight: bold;
+}
+
+
+.form-container {
+    position: relative;
+    background-color: #ffffff;
+    font-family: "Josefin Sans", sans-serif;
+    border-radius: 20px;
+    box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    margin-top: 20px; 
+    margin-bottom: 30px; 
+    width: 100%;
+    max-width: 800px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 16px 40px rgba(0, 0, 0, 0.25);
+}
+
+.form-field {
+    font-family: "Josefin Sans", sans-serif;
+   
+}
+
+
+input {
+    font-family: "Josefin Sans", sans-serif;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(52, 152, 219, 0.5);
+}
+
+
+.add-company-btn {
+    font-family: "Josefin Sans", sans-serif;
+    background-color: #000000;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 12px; 
+    font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+}
+
+.add-company-btn:hover {
+    background-color: #ff9800;
+    transform: scale(1.05);
+}
+
+
+
+.hide-add-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+    margin-left: 80%;
+}
+
+
+.hide-add-btn button {
+    font-family: "Josefin Sans", sans-serif;
+    background-color: #000000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hide-add-btn button:hover {
+    background-color: #ff9800;
+    transform: scale(1.05);
+}
+
+
+.company-list {
+    font-family: "Josefin Sans", sans-serif;
+    margin-top: 10px;
+    width: 80%;
+    padding: 10px 0; 
+    position: relative;
+    left: 160px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+
+.company-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+
+.company-list h2 {
+    margin-right: 80%; 
+    margin-bottom: 0;
+    color: #f9f9f9;
+}
+
+
+.company-list-options {
+    display: flex;
+    align-items: center;
+    
+}
+
+.company-list-options label {
+    margin-left: 85%; 
+}
+.company-list-options select {
+    padding: 5px 5px;
+    font-size: 14px;
+    margin-left:1%; 
+    font-family: "Josefin Sans", sans-serif;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+
+.company-box {
+    font-family: "Josefin Sans", sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    text-align: left; 
+}
+
+.company-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+.company-header {
+    font-family: "Josefin Sans", sans-serif;
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr 1fr 1fr 1fr; 
+    background-color: #eeeeee;
+    padding: 15px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #444;
+    justify-items: start; 
+}
+
+
+.company-row {
+    font-family: "Josefin Sans", sans-serif;
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr 1fr 1fr 1fr;
+    padding: 12px 20px;
+    border-bottom: 1px solid #ddd;
+    align-items: center;
+    justify-items: start; 
+}
+
+.company-row:last-child {
+    border-bottom: none;
+}
+
+
+.company-info {
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 14px;
+    color: #555;
+    text-align: left; 
+}
+
+
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .pagination button {
+    font-family: "Josefin Sans", sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    size: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  
+  .pagination button:hover {
+    background-color: #ff9800;
+    border-color: #aaa;
+  }
+  
+  
+  .pagination button[disabled] {
+    background-color: #000000;
+    color: #ffffff;
+    cursor: not-allowed;
+  }
+  
+  .pagination button.active {
+    background-color: #ff9800;
+    color: white;
+  }
+  .company-info{
+    border-radius: 10%;
+  }
+ 
+  @media (max-width: 600px) {
+    .pagination button {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+  }
+  

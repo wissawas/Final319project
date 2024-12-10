@@ -1,0 +1,91 @@
+
+<div class="background-container">
+  <video autoplay muted loop id="video-background" muted>
+    <source src="/video/background.mp4" type="video/mp4">
+    </video>
+</div><!-- product.component.html -->
+<div class="layout">
+  <nav class="navbar">
+    <div class="logo">
+      <a routerLink="/">
+        <img src="https://i.pinimg.com/736x/9a/fd/22/9afd22496855d5213e4ec60f845e4b06.jpg" alt="Logo" class="logo-image" />
+      </a>
+    </div>
+    <ul class="menu">
+    <li><button (click)="navigateHome()">Home</button></li>
+    <li><button (click)="navigateFactory()">Factory</button></li>
+    <li><button (click)="navigateProducts()">Products</button></li>
+    <li><button (click)="navigateEmployee()">Employee</button></li>
+    <li><button (click)="navigateAddCompany()">Company</button></li>
+    </ul>
+  </nav> 
+  
+</div>
+<div class="container">
+    <h2>Product Management</h2>
+  
+    <!-- Form for adding or editing a product -->
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="product_id">Product ID</label>
+            <input type="number" id="product_id" formControlName="product_id" class="form-control" required />
+          </div>
+      <div class="form-group">
+        <label for="product_name">Product Name</label>
+        <input type="text" id="product_name" formControlName="product_name" class="form-control" required />
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <input type="text" id="category" formControlName="category" class="form-control" required />
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" id="price" formControlName="price" class="form-control" required />
+      </div>
+      <div class="form-group">
+        <label for="quantity_in_stock">Quantity in Stock</label>
+        <input type="number" id="quantity_in_stock" formControlName="quantity_in_stock" class="form-control" required />
+      </div>
+      <div class="form-group">
+        <label for="factory_id">Factory id</label>
+        <input type="number" id="factory_id" formControlName="factory_id" class="form-control" required />
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">
+        {{ editMode ? 'Update Product' : 'Add Product' }}
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="cancelEdit()" *ngIf="editMode">
+        Cancel
+      </button>
+    </form>
+    <!-- Table for displaying products -->
+    
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>quantity in stock</th>
+          <th>Factory id</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.product_id }}</td>
+          <td>{{ product.product_name }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.quantity_in_stock }}</td>
+          <td>{{ product.factory_id }}</td>
+          <td>
+            <button class="btn btn-warning" (click)="editProduct(product)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteProduct(product.product_id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
